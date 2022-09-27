@@ -20,16 +20,18 @@ export const QUERY_THOUGHTS = gql`
 `;
 
 export const QUERY_THOUGHT = gql`
-  query Thought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+  query thought($id: ID!) {
+    thought(_id: $id) {
       _id
       thoughtText
-      thoughtAuthor
       createdAt
-      comments {
+      username
+      reactionCount
+      reactions {
         _id
-        commentText
         createdAt
+        username
+        reactionBody
       }
     }
   }
